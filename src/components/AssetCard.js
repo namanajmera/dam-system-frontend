@@ -28,7 +28,7 @@ const AssetCard = ({ asset }) => {
     if (asset.mimetype.startsWith('image/')) {
       return (
         <img
-          src={`http://localhost:8080/api/assets/${asset._id}/download`}
+          src={`${process.env.REACT_APP_API_URL}/assets/${asset._id}/download`}
           alt={asset.originalname}
           className="w-full h-32 object-cover rounded-t-lg cursor-pointer"
           onClick={() => setIsPreviewOpen(true)}

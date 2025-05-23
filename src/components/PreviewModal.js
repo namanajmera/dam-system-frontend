@@ -12,14 +12,14 @@ const PreviewModal = ({ isOpen, onClose, asset }) => {
           controls
           autoPlay={false}
         >
-          <source src={`http://localhost:8080/api/assets/${asset._id}/download`} type={asset.mimetype} />
+          <source src={`${process.env.REACT_APP_API_URL}/assets/${asset._id}/download`} type={asset.mimetype} />
           Your browser does not support the video tag.
         </video>
       );
     } else if (asset.mimetype === 'application/pdf') {
       return (
         <iframe
-          src={`http://localhost:8080/api/assets/${asset._id}/download`}
+          src={`${process.env.REACT_APP_API_URL}/assets/${asset._id}/download`}
           className="w-full h-[80vh]"
           title={asset.originalname}
         />
@@ -27,7 +27,7 @@ const PreviewModal = ({ isOpen, onClose, asset }) => {
     } else if (asset.mimetype.startsWith('image/')) {
       return (
         <img
-          src={`http://localhost:8080/api/assets/${asset._id}/download`}
+          src={`${process.env.REACT_APP_API_URL}/assets/${asset._id}/download`}
           alt={asset.originalname}
           className="max-w-full max-h-[80vh] object-contain"
         />
